@@ -1,0 +1,44 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/bin/Debug/net6.0/dotnet2plantuml.dll",
+            "args": [
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Core/Domain/Entities/Monoproduto/FamiliaImagem.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Core/Domain/Entities/Monoproduto/ProdutoGtin.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Core/Domain/Entities/Monoproduto/ProdutoImagem.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Core/Domain/Entities/Monoproduto/Produto.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Core/Domain/Entities/Monoproduto/ProdutoValidators.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Core/Domain/Entities/Monoproduto/Familia.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Core/Domain/Entities/Monoproduto/FamiliaValidators.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Api/Controllers/Monoproduto/ProdutosController.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Api/Controllers/Monoproduto/FamiliasController.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Core/Domain/Repositories/Monoproduto/FamiliaRepository.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Core/Domain/Repositories/Monoproduto/ProdutoRepository.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Core/Domain/Services/Monoproduto/FamiliaService.cs",
+                "/home/rafael/Development/pim/src/Pricefy.Pim.Core/Domain/Services/Monoproduto/ProdutoService.cs",
+                "--classes",
+                "ProdutosController",
+                "--output",
+                "resultado.plantuml"
+            ],
+            "cwd": "${workspaceFolder}",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
