@@ -1,3 +1,4 @@
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
@@ -51,18 +52,21 @@ namespace Dotnet2Plantuml
             text.Add($"  class {ClassName} {{");
             foreach (var property in Properties)
             {
-                text.Add($"    {property.Identifier.Text} : {property.Type}");
+                var modifier = GetModifierSymbol(property.Modifiers);
+                text.Add($"    {modifier} {property.Identifier.Text} : {property.Type}");
             }
             foreach (var field in Fields)
             {
+                var modifier = GetModifierSymbol(field.Modifiers);
                 foreach (var variables in field.Declaration.Variables)
                 {
-                    text.Add($"    {variables.Identifier.Text} : {field.Declaration.Type}");
+                    text.Add($"    {modifier} {variables.Identifier.Text} : {field.Declaration.Type}");
                 }
             }
             foreach (var methods in Methods)
             {
-                text.Add($"    {methods.Identifier.Text}(...) : {methods.ReturnType}");
+                var modifier = GetModifierSymbol(methods.Modifiers);
+                text.Add($"    {modifier} {methods.Identifier.Text}(...) : {methods.ReturnType}");
             }
             text.Add($"  }}");
             
@@ -70,6 +74,15 @@ namespace Dotnet2Plantuml
                 text.Add($"}}");
             
             return string.Join("\n", text);
+        }
+
+        private string GetModifierSymbol(SyntaxTokenList list)
+        {
+            var modifiers = list.Select(i => i.Text);
+            var modifier = "-";
+            modifier = modifiers.Contains("public") ? "+" : modifier;
+            modifier = modifiers.Contains("protected") ? "#" : modifier;
+            return modifier;
         }
 
         public bool IsDeclared => Declaration is not null;

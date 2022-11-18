@@ -42,5 +42,5 @@ if (output is null)
 else
 {
     await File.WriteAllTextAsync(output, text);
-    Console.WriteLine($"O conteudo foi escrito no arquivo:\n{output}");
+    Console.WriteLine($"O conteúdo foi escrito no arquivo:\n{output}");
 }
